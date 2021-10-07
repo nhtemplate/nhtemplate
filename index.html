@@ -1,0 +1,934 @@
+<HTML>
+<head>
+<title>Nh Template</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+    color: #d9d9d9;
+    background-color: #202a34;
+    font-family: Noto Sans,sans-serif;
+}
+.container {
+    display: block;
+    clear: both;
+    margin: 20px auto;
+    border-radius: 5px;
+    background-color: #ecf0f1;
+    width: 100%;
+    max-width: 1120px;
+    background-color: #2a3744;
+    margin-bottom: 25px;
+    padding: 30px 40px;
+    overflow:hidden;
+}
+#cover {
+    width: 48%;
+    height: 509px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+}
+#cover-img {
+    width: auto;
+    height: 100%;
+    max-height: 100%;
+    max-width: 100%;
+    vertical-align: middle;
+}
+#cover-img:hover {
+    outline: 1px dashed red;
+}
+#info-block {
+    width: 48%;
+    margin-left: 2%;
+    display: inline-block;
+    vertical-align: top;
+    padding: 15px 0px 15px 15px;
+}
+.title {
+    font-size: 20px;
+    font-weight: 700;
+    margin: .67em 0;
+    color: #d9d9d9;
+    background-color: #2a3744;
+    border: none;
+}
+.before {
+    font-size: 20px;
+    font-weight: 700;
+    margin: .67em 0;
+    color: #666;
+    background-color: #2a3744;
+    border: none;
+}
+.after {
+    font-size: 20px;
+    font-weight: 700;
+    margin: .67em 0;
+    color: #666;
+    background-color: #2a3744;
+    border: none;
+}
+.tags-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: #d9d9d9;
+}
+.selector {
+    color: #d9d9d9;
+    background-color: #202a34;
+    border: none;
+}
+.selector-count {
+    color: #d9d9d9;
+    background-color: #202a34;
+    border: none;
+    width: 75px;
+}
+.add-button {
+    background-color: #d9d9d9;
+    color: #202a34;
+    border: none;
+    border-radius: 20%;
+    padding: 1px 5px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.add-button:hover, .add-button:active, .add-button:focus {
+    background-color: #f9f9f9;
+}
+.tag {
+    margin: 3px;
+    display: inline-block;
+    cursor: pointer;
+}
+.tag:hover {
+    outline: 1px dashed red;
+}
+.tag-name {
+    font-size: 14px;
+    color: #d9d9d9;
+    background: #3d5064;
+    padding: 2px 5px;
+    align-items: center;
+    border-top-left-radius: .3em;
+    border-bottom-left-radius: .3em;
+    font-weight: 700;
+}
+.tag-count {
+    font-size: 14px;
+    color: #d9d9d9;
+    background: #364657;
+    padding: 2px 5px;
+    align-items: center;
+    border-top-right-radius: .3em;
+    border-bottom-right-radius: .3em;
+}
+.tag-type {
+    display: none;
+}
+.input-group {
+    display: inline-block;
+    margin: 0;
+}
+.settings-title {
+    margin-bottom: 10px;
+    text-decoration: underline;
+}
+.settings-section-1 {
+    width: 40%;
+    float: left;
+    margin-right: 10%;
+}
+.settings-section-2 {
+    width: 40%;
+    float: left;
+    padding-left: 15px;
+}
+.tag-type-group {
+    margin-bottom: 10px;
+}
+#number {
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+}
+#number-pound {
+    color: #666;
+    margin-right: 2px;
+}
+#pages {
+    font-size: 14px;
+    color: #d9d9d9;
+    background: #3d5064;
+    padding: 2px 5px;
+    align-items: center;
+    border-radius: .3em;
+    font-weight: 700;
+}
+#uploaded {
+    font-family: Noto Sans,sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+}
+#favorite {
+    color: #fff;
+    background-color: #ed2553;
+    min-width: 120px;
+    text-align: center;
+    margin: 0;
+    border: 0;
+    border-radius: 3px;
+    outline: 0;
+    padding: 12px 14px;
+    font-family: Noto Sans,sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+#favorite:hover, #favorite:active, #favorite:focus {
+    background-color: #f15478;
+}
+#favorite-text {
+    font-weight: 700;
+}
+#favorite-count {
+    font-weight: 400;
+}
+#download {
+    color: #fff;
+    background-color: #475d73;
+    min-width: 120px;
+    text-align: center;
+    margin: 0;
+    border: 0;
+    border-radius: 3px;
+    outline: 0;
+    padding: 12px 14px;
+    font-family: Noto Sans,sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+#download:hover, #download:active, #download:focus {
+    background-color: #516a83;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div id="cover"><input type="file" id="img-select"><img id="cover-img" src="#" style="display: none"/></div>
+    <div id="info-block">
+        <span contenteditable="true" spellcheck="false" class="before" id="artist">[ARTIST]</span>
+        <span contenteditable="true" spellcheck="false" class="title" id="title">This is a customizable title!</span>
+        <span contenteditable="true" spellcheck="false" class="after" id="misc">[Miscellaneous info]</span>
+        
+        <span contenteditable="true" spellcheck="false" class="spacer-top"><br><br><br></span>
+        
+        <div id="number"><span id="number-pound">#</span><span contenteditable="true" spellcheck="false" class="spacer-top">42069</span></div>
+        
+        <span contenteditable="true" spellcheck="false" class="spacer-top"><br><br></span>
+        
+        <div id="parodies-group" class="tag-type-group" style="display: none">
+            <span class="tags-label">Parodies:</span><span id="parodies"></span>
+            <br/>
+            <div class="input-group">
+                <input list="parodies-datalist" name="parodies-select" id="parodies-select" class="selector">
+                <input type="number" name="parodies-select-count" id="parodies-select-count" class="selector-count">
+                <datalist id="parodies-datalist"></datalist>
+                <button class="add-button" id="add-parody">+</button>
+            </div>
+            <span contenteditable="true" spellcheck="false" class="spacer"><br><br></span>
+        </div>
+        
+        <div id="characters-group" class="tag-type-group" style="display: none">
+            <span class="tags-label">Characters:</span><span id="characters"></span>
+            <br/>
+            <div class="input-group">
+                <input list="characters-datalist" name="characters-select" id="characters-select" class="selector">
+                <input type="number" name="characters-select-count" id="characters-select-count" class="selector-count">
+                <datalist id="characters-datalist"></datalist>
+                <button class="add-button" id="add-character">+</button>
+            </div>
+            <span contenteditable="true" spellcheck="false" class="spacer"><br><br></span>
+        </div>
+        
+        <div id="tags-group" class="tag-type-group">
+            <span class="tags-label">Tags:</span><span id="tags"></span>
+            <br/>
+            <div class="input-group">
+                <input list="tags-datalist" name="tags-select" id="tags-select" class="selector">
+                <input type="number" name="tags-select-count" id="tags-select-count" class="selector-count">
+                <datalist id="tags-datalist"></datalist>
+                <button class="add-button" id="add-tag">+</button>
+            </div>
+            <span contenteditable="true" spellcheck="false" class="spacer"><br><br></span>
+        </div>
+        
+        <div id="artists-group" class="tag-type-group" style="display: none">
+            <span class="tags-label">Artists:</span><span id="artists"></span>
+            <br/>
+            <div class="input-group">
+                <input list="artists-datalist" name="artists-select" id="artists-select" class="selector">
+                <input type="number" name="artists-select-count" id="artists-select-count" class="selector-count">
+                <datalist id="artists-datalist"></datalist>
+                <button class="add-button" id="add-artist">+</button>
+            </div>
+            <span contenteditable="true" spellcheck="false" class="spacer"><br><br></span>
+        </div>
+        
+        <div id="groups-group" class="tag-type-group" style="display: none">
+            <span class="tags-label">Groups:</span><span id="groups"></span>
+            <br/>
+            <div class="input-group">
+                <input list="groups-datalist" name="groups-select" id="groups-select" class="selector">
+                <input type="number" name="groups-select-count" id="groups-select-count" class="selector-count">
+                <datalist id="groups-datalist"></datalist>
+                <button class="add-button" id="add-group">+</button>
+            </div>
+            <span contenteditable="true" spellcheck="false" class="spacer"><br><br></span>
+        </div>
+        
+        <div id="languages-group" class="tag-type-group">
+            <span class="tags-label">Languages:</span><span id="languages"></span>
+            <br/>
+            <div class="input-group">
+                <input list="languages-datalist" name="languages-select" id="languages-select" class="selector">
+                <input type="number" name="languages-select-count" id="languages-select-count" class="selector-count">
+                <datalist id="languages-datalist">
+                    <option value="japanese">Random count</option>
+                    <option value="english">Random count</option>
+                    <option value="chinese">Random count</option>
+                    <option value="translated">Random count</option>
+                </datalist>
+                <button class="add-button" id="add-language">+</button>
+            </div>
+            <span contenteditable="true" spellcheck="false" class="spacer"><br><br></span>
+        </div>
+        
+        <div id="categories-group" class="tag-type-group">
+            <span class="tags-label">Categories:</span><span id="categories"></span>
+            <br/>
+            <div class="input-group">
+                <input list="categories-datalist" name="categories-select" id="categories-select" class="selector">
+                <input type="number" name="categories-select-count" id="categories-select-count" class="selector-count">
+                <datalist id="categories-datalist">
+                    <option value="doujinshi">Random count</option>
+                    <option value="manga">Random count</option>
+                    <option value="western">Random count</option>
+                    <option value="meme">Random count</option>
+                </datalist>
+                <button class="add-button" id="add-category">+</button>
+            </div>
+            <span contenteditable="true" spellcheck="false" class="spacer"><br><br></span>
+        </div>
+        
+        <div id="pages-group" class="tag-type-group">
+            <span class="tags-label">Pages:</span>
+            <span contenteditable="true" spellcheck="false" id="pages">420</span>
+            <span contenteditable="true" spellcheck="false" class="spacer"><br><br></span>
+        </div>
+        
+        <div id="uploaded-group" class="tag-type-group">
+            <span class="tags-label">Uploaded:</span>
+            <span contenteditable="true" spellcheck="false" id="uploaded">6 years, 9 months ago</span>
+            <span contenteditable="true" spellcheck="false" class="spacer"><br><br></span>
+        </div>
+        
+        <button id="favorite">
+            <i id="favorite-icon" class="fa fa-heart"></i>
+            <span id="favorite-text">Favorite</span>&nbsp;(<span id="favorite-count" contenteditable="true" spellcheck="false">69420</span>)
+        </button>
+        <button id="download">
+            <i class="fa fa-download"></i>
+            Download
+        </button>
+        
+    </div>
+</div>
+<div class="container">
+    <section class="settings-section-1">
+        <h4 class="settings-title">Info:</h4>
+        <p>This is a customizable nhentai template that you can fill in with whatever pleases you.</p>
+        <p>You can choose a cover image. Edit the title. Change the infamous nhentai ID number. Add whichever tags you want. Anything that looks editable is editable!</p>
+        <p>Don't see a tag you want? You can add your own custom tag. You can remove the image and tags by clicking on them once they have been placed.</p>
+        <p>The title format is typically:
+            <br/>
+            <span class="before" style="font-size: 16px">[Group (Artist)] or [Artist]</span>
+            <span class="title" style="font-size: 16px"> Title Here </span>
+            <span class="before" style="font-size: 16px">(Parody/Magazine Issue) [Language] [Scanlation Group] or {Scanlation Group} [Decensored] [Digital]</span>
+        </p>
+        <p>Data was last scraped at <span id="last-updated">???</span> GMT.</p>
+    </section>
+    
+    <section class="settings-section-2">
+        <h4 class="settings-title">Tag Type Selection:</h4>
+    
+        <label for="parodies-checkbox">Parodies:</label>
+        <input type="checkbox" id="parodies-checkbox" name="parodies-checkbox" value="Parodies">
+        <br/>
+        <label for="characters-checkbox">Characters:</label>
+        <input type="checkbox" id="characters-checkbox" name="characters-checkbox" value="Characters">
+        <br/>
+        <label for="tags-checkbox">Tags:</label>
+        <input type="checkbox" id="tags-checkbox" name="tags-checkbox" value="Tags" checked>
+        <br/>
+        <label for="artists-checkbox">Artists:</label>
+        <input type="checkbox" id="artists-checkbox" name="artists-checkbox" value="Artists">
+        <br/>
+        <label for="groups-checkbox">Groups:</label>
+        <input type="checkbox" id="groups-checkbox" name="groups-checkbox" value="Groups">
+        <br/>
+        <label for="languages-checkbox">Languages:</label>
+        <input type="checkbox" id="languages-checkbox" name="languages-checkbox" value="Languages" checked>
+        <br/>
+        <label for="categories-checkbox">Categories:</label>
+        <input type="checkbox" id="categories-checkbox" name="categories-checkbox" value="Categories" checked>
+        <br/>
+        <h4 class="settings-title">User Interface:</h4>
+        <label for="hide-ui">Hide the customization UI: </label>
+        <input type="checkbox" id="hide-ui" name="hide-ui" value="HideUI">
+    </section>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script src="data.js"></script>
+<script>
+//variables parodies, characters, tags, artists, groups, lastUpdatedGMT are included in data.js generated by scraper.py
+
+//These global variables store the tags that have been selected and placed on the UI
+//The object stores a map of which tags have been placed for quick checks for collision (attempting to add a tag that's already added)
+//The array stores a sorted list of the placed tags so that they are in descending order according to count
+var tagsSelected = {};
+var tagsSelectedSorted = [];
+var parodiesSelected = {};
+var parodiesSelectedSorted = [];
+var charactersSelected = {};
+var charactersSelectedSorted = [];
+var artistsSelected = {};
+var artistsSelectedSorted = [];
+var groupsSelected = {};
+var groupsSelectedSorted = [];
+var languagesSelected = {};
+var languagesSelectedSorted = [];
+var categoriesSelected = {};
+var categoriesSelectedSorted = [];
+
+//On document load...
+$(document).ready(function() {
+
+    //============================================================================//
+    //Show or hide tags
+    $("#tags-checkbox").change(function() {
+        if ($(this).is(":checked")) {
+            $("#tags-group").show();
+        }
+        else {
+            $("#tags-group").hide();
+        }
+    });
+    $("#tags-group").show();
+    
+    //Generates the datalist for tags
+    var tagOptionsHTML = "";
+    var tagsSorted = sortObjDesc(tags);
+    for (var i = 0; i < tagsSorted.length; i++) {
+        var tagname = tagsSorted[i]["key"];
+        var tagcount = tagsSorted[i]["value"];
+        tagOptionsHTML += "<option value='"+tagname+"'>"+tagcount+"</option>"
+    }
+    $("#tags-datalist").html(tagOptionsHTML);
+    
+    //Handling the tag selection
+    $("#tags-select").change(function() {
+        var tagname = $("#tags-select").val();
+        var tagcount = tags[tagname];
+        $("#tags-select-count").val(tagcount);
+    });
+    
+    //Adding tags
+    $("#add-tag").click(function() {
+        var tagname = $("#tags-select").val();
+        var tagcount = $("#tags-select-count").val();
+        if (tagcount == "" || tagcount <= 0) {
+            tagcount = 1;
+        }
+        
+        if (tagname in tagsSelected || tagname == "") {
+            //Do nothing
+        }
+        else {
+            tagsSelected[tagname] = tagcount;
+            buildTagList("tags");
+            $("#tags-select").val("");
+            $("#tags-select-count").val("");
+        }
+    });
+    
+    //============================================================================//
+    //Show or hide parodies
+    $("#parodies-checkbox").change(function() {
+        if ($(this).is(":checked")) {
+            $("#parodies-group").show();
+        }
+        else {
+            $("#parodies-group").hide();
+        }
+    });
+    $("#parodies-group").hide();
+    
+    //Generates the datalist for parodies
+    var parodyOptionsHTML = "";
+    var parodiesSorted = sortObjDesc(parodies);
+    for (var i = 0; i < parodiesSorted.length; i++) {
+        var parodyname = parodiesSorted[i]["key"];
+        var parodycount = parodiesSorted[i]["value"];
+        parodyOptionsHTML += "<option value='"+parodyname+"'>"+parodycount+"</option>"
+    }
+    $("#parodies-datalist").html(parodyOptionsHTML);
+    
+    //Handling the parody selection
+    $("#parodies-select").change(function() {
+        var parodyname = $("#parodies-select").val();
+        var parodycount = parodies[parodyname];
+        $("#parodies-select-count").val(parodycount);
+    });
+    
+    //Adding parodies
+    $("#add-parody").click(function() {
+        var parodyname = $("#parodies-select").val();
+        var parodycount = $("#parodies-select-count").val();
+        if (parodycount == "" || parodycount <= 0) {
+            parodycount = 1;
+        }
+        
+        if (parodyname in parodiesSelected || parodyname == "") {
+            //Do nothing
+        }
+        else {
+            parodiesSelected[parodyname] = parodycount;
+            buildTagList("parodies");
+            $("#parodies-select").val("");
+            $("#parodies-select-count").val("");
+        }
+    });
+    
+    //============================================================================//
+    //Show or hide characters
+    $("#characters-checkbox").change(function() {
+        if ($(this).is(":checked")) {
+            $("#characters-group").show();
+        }
+        else {
+            $("#characters-group").hide();
+        }
+    });
+    $("#characters-group").hide();
+    
+    //Generates the datalist for characters
+    var characterOptionsHTML = "";
+    var charactersSorted = sortObjDesc(characters);
+    for (var i = 0; i < charactersSorted.length; i++) {
+        var charactername = charactersSorted[i]["key"];
+        var charactercount = charactersSorted[i]["value"];
+        characterOptionsHTML += "<option value='"+charactername+"'>"+charactercount+"</option>"
+    }
+    $("#characters-datalist").html(characterOptionsHTML);
+    
+    //Handling the character selection
+    $("#characters-select").change(function() {
+        var charactername = $("#characters-select").val();
+        var charactercount = characters[charactername];
+        $("#characters-select-count").val(charactercount);
+    });
+    
+    //Adding characters
+    $("#add-character").click(function() {
+        var charactername = $("#characters-select").val();
+        var charactercount = $("#characters-select-count").val();
+        if (charactercount == "" || charactercount <= 0) {
+            charactercount = 1;
+        }
+        
+        if (charactername in charactersSelected || charactername == "") {
+            //Do nothing
+        }
+        else {
+            charactersSelected[charactername] = charactercount;
+            buildTagList("characters");
+            $("#characters-select").val("");
+            $("#characters-select-count").val("");
+        }
+    });
+    
+    //============================================================================//
+    //Show or hide artists
+    $("#artists-checkbox").change(function() {
+        if ($(this).is(":checked")) {
+            $("#artists-group").show();
+        }
+        else {
+            $("#artists-group").hide();
+        }
+    });
+    $("#artists-group").hide();
+    
+    //Generates the datalist for artists
+    var artistOptionsHTML = "";
+    var artistsSorted = sortObjDesc(artists);
+    for (var i = 0; i < artistsSorted.length; i++) {
+        var artistname = artistsSorted[i]["key"];
+        var artistcount = artistsSorted[i]["value"];
+        artistOptionsHTML += "<option value='"+artistname+"'>"+artistcount+"</option>"
+    }
+    $("#artists-datalist").html(artistOptionsHTML);
+    
+    //Handling the artist selection
+    $("#artists-select").change(function() {
+        var artistname = $("#artists-select").val();
+        var artistcount = artists[artistname];
+        $("#artists-select-count").val(artistcount);
+    });
+    
+    //Adding artists
+    $("#add-artist").click(function() {
+        var artistname = $("#artists-select").val();
+        var artistcount = $("#artists-select-count").val();
+        if (artistcount == "" || artistcount <= 0) {
+            artistcount = 1;
+        }
+        
+        if (artistname in artistsSelected || artistname == "") {
+            //Do nothing
+        }
+        else {
+            artistsSelected[artistname] = artistcount;
+            buildTagList("artists");
+            $("#artists-select").val("");
+            $("#artists-select-count").val("");
+        }
+    });
+    
+    //============================================================================//
+    //Show or hide groups
+    $("#groups-checkbox").change(function() {
+        if ($(this).is(":checked")) {
+            $("#groups-group").show();
+        }
+        else {
+            $("#groups-group").hide();
+        }
+    });
+    $("#groups-group").hide();
+    
+    //Generates the datalist for groups
+    var groupOptionsHTML = "";
+    var groupsSorted = sortObjDesc(groups);
+    for (var i = 0; i < groupsSorted.length; i++) {
+        var groupname = groupsSorted[i]["key"];
+        var groupcount = groupsSorted[i]["value"];
+        groupOptionsHTML += "<option value='"+groupname+"'>"+groupcount+"</option>"
+    }
+    $("#groups-datalist").html(groupOptionsHTML);
+    
+    //Handling the group selection
+    $("#groups-select").change(function() {
+        var groupname = $("#groups-select").val();
+        var groupcount = groups[groupname];
+        $("#groups-select-count").val(groupcount);
+    });
+    
+    //Adding groups
+    $("#add-group").click(function() {
+        var groupname = $("#groups-select").val();
+        var groupcount = $("#groups-select-count").val();
+        if (groupcount == "" || groupcount <= 0) {
+            groupcount = 1;
+        }
+        
+        if (groupname in groupsSelected || groupname == "") {
+            //Do nothing
+        }
+        else {
+            groupsSelected[groupname] = groupcount;
+            buildTagList("groups");
+            $("#groups-select").val("");
+            $("#groups-select-count").val("");
+        }
+    });
+    
+    //============================================================================//
+    //Show or hide languages
+    $("#languages-checkbox").change(function() {
+        if ($(this).is(":checked")) {
+            $("#languages-group").show();
+        }
+        else {
+            $("#languages-group").hide();
+        }
+    });
+    $("#languages-group").show();
+    
+    //Generates the datalist for tags
+    //Already hardcoded in the HTML
+    
+    //Handling the tag selection
+    $("#languages-select").change(function() {
+        var languagename = $("#languages-select").val();
+        var languagecount = Math.floor(Math.random()*100 + 1)*1000;
+        if (languagename == "") {
+            $("#languages-select-count").val("");
+        }
+        else {
+            $("#languages-select-count").val(languagecount);
+        }
+    });
+    
+    //Adding languages
+    $("#add-language").click(function() {
+        var languagename = $("#languages-select").val();
+        var languagecount = $("#languages-select-count").val();
+        if (languagecount == "" || languagecount <= 0) {
+            languagecount = 1;
+        }
+        
+        if (languagename in languagesSelected || languagename == "") {
+            //Do nothing
+        }
+        else {
+            languagesSelected[languagename] = languagecount;
+            buildTagList("languages");
+            $("#languages-select").val("");
+            $("#languages-select-count").val("");
+        }
+    });
+    
+    //============================================================================//
+    //Show or hide categories
+    $("#categories-checkbox").change(function() {
+        if ($(this).is(":checked")) {
+            $("#categories-group").show();
+        }
+        else {
+            $("#categories-group").hide();
+        }
+    });
+    $("#categories-group").show();
+    
+    //Generates the datalist for tags
+    //Already hardcoded in the HTML
+    
+    //Handling the tag selection
+    $("#categories-select").change(function() {
+        var categoryname = $("#categories-select").val();
+        var categorycount = Math.floor(Math.random()*100 + 1)*1000;
+        if (categoryname == "") {
+            $("#categories-select-count").val("");
+        }
+        else {
+            $("#categories-select-count").val(categorycount);
+        }
+    });
+    
+    //Adding categories
+    $("#add-category").click(function() {
+        var categoryname = $("#categories-select").val();
+        var categorycount = $("#categories-select-count").val();
+        if (categorycount == "" || categorycount <= 0) {
+            categorycount = 1;
+        }
+        
+        if (categoryname in categoriesSelected || categoryname == "") {
+            //Do nothing
+        }
+        else {
+            categoriesSelected[categoryname] = categorycount;
+            buildTagList("categories");
+            $("#categories-select").val("");
+            $("#categories-select-count").val("");
+        }
+    });
+    
+    //============================================================================//
+    //Handling the favorite button to increment and decrement count on click as well as change appearance
+    $("#favorite").click(function() {
+        if ($("#favorite-icon").hasClass("fa-heart")) {
+            $("#favorite-icon").addClass("fa-heart-o").removeClass("fa-heart");
+            $("#favorite-text").text("Unfavorite");
+            $("#favorite-count").text(+$("#favorite-count").text() + 1 + "");
+        }
+        else {
+            $("#favorite-icon").addClass("fa-heart").removeClass("fa-heart-o");
+            $("#favorite-text").text("Favorite");
+            $("#favorite-count").text(+$("#favorite-count").text() - 1 + "");
+        }
+    });
+    
+    //============================================================================//
+    //Cover Image
+    $("#cover-img").hide();
+    
+    //When a local file is selected, read the image data and set the source
+    $("#img-select").change(function(){
+        readImage(this);
+    });
+    
+    //Reset the image when it is clicked
+    $("#cover-img").click(function() {
+        $("#cover-img").hide();
+        $("#img-select").show();
+        $("#img-select").val("");
+        $("#cover-img").attr("src", "");
+    });
+    
+    //Hide the customization UI when checked
+    $("#hide-ui").change(function() {
+        if ($(this).is(":checked")) {
+            $(".input-group").hide();
+            $(".spacer").hide();
+        }
+        else {
+            $(".input-group").show();
+            $(".spacer").show();
+        }
+    });
+    
+    //Update the last updated date time
+    $("#last-updated").text(lastUpdatedGMT);
+    
+});
+
+
+function readImage(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $("#cover-img").show();
+            $("#img-select").hide();
+            $("#cover-img").attr("src", e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function attachDeleteTagListeners() {
+    $(".tag").click(function() {
+        var tagname = $(this).find(".tag-name").text();
+        var tagtype = $(this).find(".tag-type").text();
+        var objSelected = fetchSelected(tagtype);
+        delete objSelected[tagname];
+        buildTagList(tagtype);
+    });
+}
+
+function buildTagList(type) {
+    var tagHTML = "";
+    var objSelectedSorted = fetchSelectedSorted(type);
+    for (var i = 0; i < objSelectedSorted.length; i++) {
+        tagname = objSelectedSorted[i]["key"];
+        tagcount = objSelectedSorted[i]["value"];
+        if (tagcount >= 1000) {
+            tagcount = Math.floor(tagcount / 1000) + "K";
+        }
+        tagHTML += "<span class='tag'><span class='tag-name'>"+tagname+"</span><span class='tag-count'>"+tagcount+"</span><span class='tag-type'>"+type+"</span></span>"
+    }
+    $("#"+type).html(tagHTML);
+    attachDeleteTagListeners();
+}
+
+function fetchSelected(type) {
+    var objSelected;
+    switch(type) {
+        case "tags":
+            objSelected = tagsSelected;
+            break;
+        case "parodies":
+            objSelected = parodiesSelected;
+            break;
+        case "characters":
+            objSelected = charactersSelected;
+            break;
+        case "artists":
+            objSelected = artistsSelected;
+            break;
+        case "groups":
+            objSelected = groupsSelected;
+            break;
+        case "languages":
+            objSelected = languagesSelected;
+            break;
+        case "categories":
+            objSelected = categoriesSelected;
+            break;
+        default:
+            console.log("ERROR!");
+    }
+    return objSelected;
+}
+
+function fetchSelectedSorted(type) {
+    var objSelectedSorted;
+    switch(type) {
+        case "tags":
+            tagsSelectedSorted = sortObjDesc(tagsSelected);
+            objSelectedSorted = tagsSelectedSorted;
+            break;
+        case "parodies":
+            parodiesSelectedSorted = sortObjDesc(parodiesSelected);
+            objSelectedSorted = parodiesSelectedSorted;
+            break;
+        case "characters":
+            charactersSelectedSorted = sortObjDesc(charactersSelected);
+            objSelectedSorted = charactersSelectedSorted;
+            break;
+        case "artists":
+            artistsSelectedSorted = sortObjDesc(artistsSelected);
+            objSelectedSorted = artistsSelectedSorted;
+            break;
+        case "groups":
+            groupsSelectedSorted = sortObjDesc(groupsSelected);
+            objSelectedSorted = groupsSelectedSorted;
+            break;
+        case "languages":
+            languagesSelectedSorted = sortObjDesc(languagesSelected);
+            objSelectedSorted = languagesSelectedSorted;
+            break;
+        case "categories":
+            categoriesSelectedSorted = sortObjDesc(categoriesSelected);
+            objSelectedSorted = categoriesSelectedSorted;
+            break;
+        default:
+            console.log("ERROR!");
+    }
+    return objSelectedSorted;
+}
+
+function sortObjDesc(obj) {
+    var arr = [];
+    for (var prop in obj) {
+        if (obj.hasOwnProperty(prop)) {
+            arr.push({
+                'key': prop,
+                'value': obj[prop]
+            });
+        }
+    }
+    arr.sort(function(a, b) { return b.value - a.value; });
+    //arr.sort(function(a, b) { a.value.toLowerCase().localeCompare(b.value.toLowerCase()); }); //use this to sort as strings
+    return arr;
+}
+
+
+//TODO:
+//Actual nhentai search functionality
+//Comment and rearrange code
+//Rounded corners on cover image
+//Scrape for languages and categories
+
+
+</script>
+</body>
+</HTML>
