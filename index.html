@@ -804,7 +804,7 @@ $(document).ready(function() {
         //Convert the div into a canvas and then convert that to blob data to save as an image
         html2canvas(document.getElementById("product"), { backgroundColor: null }).then(function(canvas) {
             canvas.toBlob(function(blob) {
-                saveAs(blob, "download.png");
+                saveAs(blob, "nhtemplate.png");
             });
         });
     });
